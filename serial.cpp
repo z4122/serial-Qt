@@ -19,12 +19,11 @@ serial::serial(QWidget *parent)
 
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
 
-	connect(&workThread, &QThread::finished, sthread, &QObject::deleteLater);
-	connect(this, SIGNAL(serialStartWork()), sthread, SLOT(readContent()));
+	connect(sthread, SIGNAL(catchError(const QString&)), this, SLOT(getError(const QString&)));
 
-	connect(sthread, SIGNAL(catchError(QString&)), this, SLOT(getError(QString&)));
+	connect(sthread, SIGNAL(serialContent(const QString&)), this, SLOT(textShow(const QString&)));
 
-	this->workThread.start();
+	
 }
 
 
@@ -35,19 +34,19 @@ void serial::serialBoxChange(int index)
 
 }
 
-void serial::on_openSerialButton_clicked()
+void serial::on_openSerialButton_clicked() //打开串口按钮
 {
 	
 	static int flag = 0;
 	if (flag == 0)
 	{		
-		emit serialStartWork();
+		sthread->start();
 		ui.openSerialButton->setText("关闭串口");		
 		flag = 1;
 	}
 	else
 	{
-		emit serialStopWork();
+
 		ui.openSerialButton->setText("打开串口");
 		flag = 0;
 	}
@@ -57,12 +56,12 @@ void serial::on_openSerialButton_clicked()
 
 
 
-void serial::textShow(QString& input)
+void serial::textShow(const QString& input)
 {
 	ui.serialText->append(input);
 }
 
-void serial::getError(QString & input)
+void serial::getError(const QString & input)//通过这种方法在主界面生成消息提示框
 {
 	QMessageBox::warning(this, "错误",input);
 }

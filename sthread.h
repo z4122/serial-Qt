@@ -8,24 +8,26 @@
 #include "qstring.h"
 #include "qsignaltransition.h"
 #include "string"
+#include "qthread.h"
+#include "qtimer.h"
 
 using namespace std;
-class SerialThread : public QObject
+class SerialThread : public QThread
 {
 	Q_OBJECT
 
 public:
-	SerialThread(QObject* parent = NULL);
+	SerialThread(QObject *parent = 0);
 	~SerialThread();
 
-
-
-public slots:
-	void readContent();
+protected:
+	void run();
 
 signals:
+	void catchError(const QString&);
+	void serialContent(const QString&);
 
-	void catchError(QString&);
-	void serialContent(QString&);
+
+	
 
 };

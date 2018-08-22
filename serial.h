@@ -25,7 +25,6 @@ public:
 
 private:
 	Ui::serialClass ui;
-	QThread workThread;
 	SerialThread *sthread;
 
 public slots:
@@ -35,8 +34,8 @@ public slots:
 	void on_locationButton_clicked();
 	void serialBoxChange(int);
 	
-	void textShow(QString&);
-	void getError(QString&);
+	void textShow(const QString&);
+	void getError(const QString&);
 
 signals:
 	void serialStartWork();

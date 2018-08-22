@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_t {
-    QByteArrayData data[12];
-    char stringdata0[181];
+    QByteArrayData data[11];
+    char stringdata0[172];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,15 +41,14 @@ QT_MOC_LITERAL(6, 90, 21), // "on_stopButton_clicked"
 QT_MOC_LITERAL(7, 112, 25), // "on_locationButton_clicked"
 QT_MOC_LITERAL(8, 138, 15), // "serialBoxChange"
 QT_MOC_LITERAL(9, 154, 8), // "textShow"
-QT_MOC_LITERAL(10, 163, 8), // "QString&"
-QT_MOC_LITERAL(11, 172, 8) // "getError"
+QT_MOC_LITERAL(10, 163, 8) // "getError"
 
     },
     "serial\0serialStartWork\0\0serialStopWork\0"
     "on_openSerialButton_clicked\0"
     "on_startButton_clicked\0on_stopButton_clicked\0"
     "on_locationButton_clicked\0serialBoxChange\0"
-    "textShow\0QString&\0getError"
+    "textShow\0getError"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,7 +76,7 @@ static const uint qt_meta_data_serial[] = {
        7,    0,   64,    2, 0x0a /* Public */,
        8,    1,   65,    2, 0x0a /* Public */,
        9,    1,   68,    2, 0x0a /* Public */,
-      11,    1,   71,    2, 0x0a /* Public */,
+      10,    1,   71,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -89,8 +88,8 @@ static const uint qt_meta_data_serial[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, 0x80000000 | 10,    2,
-    QMetaType::Void, 0x80000000 | 10,    2,
+    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString,    2,
 
        0        // eod
 };
@@ -108,8 +107,8 @@ void serial::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 4: _t->on_stopButton_clicked(); break;
         case 5: _t->on_locationButton_clicked(); break;
         case 6: _t->serialBoxChange((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->textShow((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 8: _t->getError((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: _t->textShow((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 8: _t->getError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
