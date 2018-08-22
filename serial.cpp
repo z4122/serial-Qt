@@ -15,9 +15,16 @@ serial::serial(QWidget *parent)
 	ui.serialComboBox->addItems(QStringList("串口1"));
 	ui.serialComboBox->addItems(QStringList("串口2"));
 
+	sthread = new SerialThread();
+
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
 
+	connect(&workThread, &QThread::finished, sthread, &QObject::deleteLater);
+	connect(this, SIGNAL(serialStartWork()), sthread, SLOT(readContent()));
 
+	connect(sthread, SIGNAL(catchError(QString&)), this, SLOT(getError(QString&)));
+
+	this->workThread.start();
 }
 
 
@@ -33,9 +40,9 @@ void serial::on_openSerialButton_clicked()
 	
 	static int flag = 0;
 	if (flag == 0)
-	{
+	{		
 		emit serialStartWork();
-		ui.openSerialButton->setText("关闭串口");
+		ui.openSerialButton->setText("关闭串口");		
 		flag = 1;
 	}
 	else
@@ -53,6 +60,11 @@ void serial::on_openSerialButton_clicked()
 void serial::textShow(QString& input)
 {
 	ui.serialText->append(input);
+}
+
+void serial::getError(QString & input)
+{
+	QMessageBox::warning(this, "错误",input);
 }
 
 void serial::on_startButton_clicked()

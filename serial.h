@@ -10,21 +10,25 @@
 #include <qfiledialog.h>
 #include <qtextstream.h>
 #include "string"
-
+#include "sthread.h"
+#include "qthread.h"
 
 using namespace std;
 class serial : public QMainWindow
 {
 	Q_OBJECT
 
+
+
 public:
 	serial(QWidget *parent = Q_NULLPTR);
 
 private:
 	Ui::serialClass ui;
+	QThread workThread;
+	SerialThread *sthread;
 
-
-private slots:
+public slots:
 	void on_openSerialButton_clicked();
 	void on_startButton_clicked();
 	void on_stopButton_clicked();
@@ -32,11 +36,13 @@ private slots:
 	void serialBoxChange(int);
 	
 	void textShow(QString&);
-
+	void getError(QString&);
 
 signals:
 	void serialStartWork();
 	void serialStopWork();
 	
+
+
 
 };

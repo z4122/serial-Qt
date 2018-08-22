@@ -1,4 +1,5 @@
 #pragma once
+#pragma execution_character_set("utf-8")
 
 #include <QObject>
 #include "qobject.h"
@@ -16,7 +17,8 @@ class SerialThread : public QObject
 public:
 	SerialThread(QObject* parent = NULL);
 	~SerialThread();
-	
+
+
 
 public slots:
 	void readContent();
@@ -25,4 +27,5 @@ signals:
 
 	void catchError(QString&);
 	void serialContent(QString&);
+
 };
