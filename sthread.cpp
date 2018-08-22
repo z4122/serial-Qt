@@ -26,19 +26,22 @@ void SerialThread::run()
 	
 	
 	char cRecved = 0x00;
-	int n = 10;
+
 	while (1)
 	{
-		while (n--)
-			if (serialport.ReadChar(cRecved) == true)
-			{
-				if ((cRecved >= 48) && (cRecved <= 57))
-					str += cRecved;
-			}
-		n = 10;
+		if (serialport.ReadChar(cRecved) == true)
+		{
+			if ((cRecved >= 48) && (cRecved <= 57))
+				str += cRecved;
+			else
+				continue;
+		}
+		else
+		{
+			continue;
+		}
 		emit serialContent((const QString)QString::fromStdString(str));
 		str.clear();
-		sleep(1);
 		//this->ui.pushButton->setText(QApplication::translate("serialClass", &cRecved, Q_NULLPTR));
 	}
 	

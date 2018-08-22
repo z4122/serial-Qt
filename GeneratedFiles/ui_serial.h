@@ -18,12 +18,11 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
-#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
+#include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -32,13 +31,12 @@ class Ui_serialClass
 public:
     QWidget *centralWidget;
     QPushButton *openSerialButton;
-    QToolButton *toolButton;
-    QRadioButton *radioButton;
     QComboBox *serialComboBox;
     QPushButton *startButton;
     QTextEdit *serialText;
     QPushButton *locationButton;
     QPushButton *stopButton;
+    QCustomPlot *widget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,12 +51,6 @@ public:
         openSerialButton = new QPushButton(centralWidget);
         openSerialButton->setObjectName(QStringLiteral("openSerialButton"));
         openSerialButton->setGeometry(QRect(110, 280, 75, 23));
-        toolButton = new QToolButton(centralWidget);
-        toolButton->setObjectName(QStringLiteral("toolButton"));
-        toolButton->setGeometry(QRect(110, 110, 37, 17));
-        radioButton = new QRadioButton(centralWidget);
-        radioButton->setObjectName(QStringLiteral("radioButton"));
-        radioButton->setGeometry(QRect(50, 190, 89, 15));
         serialComboBox = new QComboBox(centralWidget);
         serialComboBox->setObjectName(QStringLiteral("serialComboBox"));
         serialComboBox->setGeometry(QRect(20, 280, 69, 22));
@@ -67,7 +59,7 @@ public:
         startButton->setGeometry(QRect(350, 300, 75, 23));
         serialText = new QTextEdit(centralWidget);
         serialText->setObjectName(QStringLiteral("serialText"));
-        serialText->setGeometry(QRect(220, 0, 371, 281));
+        serialText->setGeometry(QRect(450, 10, 131, 261));
         serialText->setReadOnly(false);
         locationButton = new QPushButton(centralWidget);
         locationButton->setObjectName(QStringLiteral("locationButton"));
@@ -75,10 +67,13 @@ public:
         stopButton = new QPushButton(centralWidget);
         stopButton->setObjectName(QStringLiteral("stopButton"));
         stopButton->setGeometry(QRect(460, 300, 75, 23));
+        widget = new QCustomPlot(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(20, 10, 421, 261));
         serialClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(serialClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 26));
+        menuBar->setGeometry(QRect(0, 0, 600, 23));
         serialClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(serialClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -96,8 +91,6 @@ public:
     {
         serialClass->setWindowTitle(QApplication::translate("serialClass", "serial", Q_NULLPTR));
         openSerialButton->setText(QApplication::translate("serialClass", "\346\211\223\345\274\200\344\270\262\345\217\243", Q_NULLPTR));
-        toolButton->setText(QApplication::translate("serialClass", "...", Q_NULLPTR));
-        radioButton->setText(QApplication::translate("serialClass", "RadioButton", Q_NULLPTR));
         startButton->setText(QApplication::translate("serialClass", "\345\274\200\345\247\213\350\256\260\345\275\225", Q_NULLPTR));
         locationButton->setText(QApplication::translate("serialClass", "\351\200\211\346\213\251\344\277\235\345\255\230\344\275\215\347\275\256", Q_NULLPTR));
         stopButton->setText(QApplication::translate("serialClass", "\345\201\234\346\255\242\350\256\260\345\275\225", Q_NULLPTR));

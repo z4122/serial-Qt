@@ -12,6 +12,7 @@
 #include "string"
 #include "sthread.h"
 #include "qthread.h"
+#include "qcustomplot.h"
 
 using namespace std;
 class serial : public QMainWindow
@@ -22,6 +23,11 @@ class serial : public QMainWindow
 
 public:
 	serial(QWidget *parent = Q_NULLPTR);
+	double num1[100];
+	double num2[100];
+	int n;
+	void Graph_Show(QCustomPlot *, const QChar);
+
 
 private:
 	Ui::serialClass ui;
