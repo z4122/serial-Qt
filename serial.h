@@ -23,10 +23,7 @@ class serial : public QMainWindow
 
 public:
 	serial(QWidget *parent = Q_NULLPTR);
-	double num1[100];
-	double num2[100];
-	int n;
-	void Graph_Show(QCustomPlot *, const QChar);
+	void Graph_Show(QCustomPlot *, const string);
 
 
 private:
@@ -46,7 +43,7 @@ public slots:
 signals:
 	void serialStartWork();
 	void serialStopWork();
-	
+	void stopThread();
 
 
 

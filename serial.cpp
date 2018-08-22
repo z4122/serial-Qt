@@ -11,14 +11,11 @@ serial::serial(QWidget *parent)
 	ui.serialComboBox->addItems(QStringList("串口1"));
 	ui.serialComboBox->addItems(QStringList("串口2"));
 
-	sthread = new SerialThread();
+	
 
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
-
-	connect(sthread, SIGNAL(catchError(const QString&)), this, SLOT(getError(const QString&)));
-
-	connect(sthread, SIGNAL(serialContent(const QString&)), this, SLOT(textShow(const QString&)));
-
+	
+	
 	
 }
 
@@ -35,15 +32,22 @@ void serial::on_openSerialButton_clicked() //打开串口按钮
 	
 	static int flag = 0;
 	if (flag == 0)
-	{		
-		sthread->start();
+	{	
+		sthread = new SerialThread(NULL);
+		sthread->openPort(3);
+		sthread->serialport->~CSerialPort();
+
+		delete sthread;
+		sthread = NULL;
 		ui.openSerialButton->setText("关闭串口");		
 		flag = 1;
 	}
 	else
 	{
+		sthread->requestInterruption();
 		sthread->quit();
 		sthread->wait();
+
 		ui.openSerialButton->setText("打开串口");
 		flag = 0;
 	}
@@ -51,12 +55,28 @@ void serial::on_openSerialButton_clicked() //打开串口按钮
 	
 }
 
+void serial::on_startButton_clicked()
+{
+	sthread = new SerialThread(NULL);
+	connect(sthread, SIGNAL(catchError(const QString&)), this, SLOT(getError(const QString&)));
+	connect(sthread, SIGNAL(serialContent(const QString&)), this, SLOT(textShow(const QString&)));
+	sthread->openPort(3);
+	
 
+	sthread->start();
+}
+void serial::on_stopButton_clicked()
+{
+	sthread->requestInterruption();
+	sthread->quit();
+	sthread->wait();
+	sthread->serialport->~CSerialPort();
+}
 
 void serial::textShow(const QString& input)
 {
 	ui.serialText->append(input);
-	Graph_Show(ui.widget,input[0]);
+	Graph_Show(ui.widget,input.toStdString());
 }
 
 void serial::getError(const QString & input)//通过这种方法在主界面生成消息提示框
@@ -64,14 +84,7 @@ void serial::getError(const QString & input)//通过这种方法在主界面生成消息提示框
 	QMessageBox::warning(this, "错误",input);
 }
 
-void serial::on_startButton_clicked()
-{
 
-}
-void serial::on_stopButton_clicked()
-{
-
-}
 
 void serial::on_locationButton_clicked()
 {
@@ -102,54 +115,56 @@ void serial::on_locationButton_clicked()
 }
 
 
-void serial::Graph_Show(QCustomPlot *CustomPlot,const QChar data )
+void serial::Graph_Show(QCustomPlot *CustomPlot,const string data )
 {
-	QVector<double> temp(100);
-	QVector<double> temp1(100);
+	static QVector<double> temp(100);
+	static QVector<double> temp1(100);
 
-	srand((unsigned)time(NULL));//设置一个随机函数
 	for (int i = 0; i<100; i++)
 	{
 		temp[i] = i;
 	}
-	for (int i = 0; i<99; i++)
+	for (int i = 0; i<100-data.size(); i++)
 	{
-		temp1[i] = temp[i+1];
+		temp1[i] = temp1[i+data.size()];
 	}
-	temp1[99] = data.unicode()-'0';
+	for (int i = 100-data.size()+1; i < 100; i++)
+	{
+		temp1[i] = (data[i - (100 - data.size())]-'0')*10;
+	}
 	//设置画布颜色
 	QLinearGradient plotGradient;
 	//lotGradient.setStart(0, 0);
 	//plotGradient.setFinalStop(0, 350);
 	//plotGradient.setColorAt(0, QColor(80, 80, 80));
-	plotGradient.setColorAt(1, QColor(50, 50, 50));
-	ui.widget->setBackground(plotGradient);
+	//plotGradient.setColorAt(1, QColor(50, 50, 50));
+	//ui.widget->setBackground(plotGradient);
 
 	//设置坐标颜色/坐标名称颜色
-	ui.widget->xAxis->setLabelColor(Qt::white);//文字颜色
-	ui.widget->yAxis->setLabelColor(Qt::white);
-	ui.widget->xAxis->setTickLabelColor(Qt::white);//坐标轴数字颜色
-	ui.widget->yAxis->setTickLabelColor(Qt::white);
-	ui.widget->xAxis->setBasePen(QPen(Qt::white, 1));//坐标轴颜色及宽度
-	ui.widget->yAxis->setBasePen(QPen(Qt::white, 1));
-	ui.widget->xAxis->setTickPen(QPen(Qt::white, 1));//主刻度
-	ui.widget->yAxis->setTickPen(QPen(Qt::white, 1));
-	ui.widget->xAxis->setSubTickPen(QPen(Qt::white, 1));//副刻度
-	ui.widget->yAxis->setSubTickPen(QPen(Qt::white, 1));
+	//ui.widget->xAxis->setLabelColor(Qt::white);//文字颜色
+	//ui.widget->yAxis->setLabelColor(Qt::white);
+	//ui.widget->xAxis->setTickLabelColor(Qt::white);//坐标轴数字颜色
+	//ui.widget->yAxis->setTickLabelColor(Qt::white);
+	//ui.widget->xAxis->setBasePen(QPen(Qt::white, 1));//坐标轴颜色及宽度
+	//ui.widget->yAxis->setBasePen(QPen(Qt::white, 1));
+	//ui.widget->xAxis->setTickPen(QPen(Qt::white, 1));//主刻度
+	//ui.widget->yAxis->setTickPen(QPen(Qt::white, 1));
+	//ui.widget->xAxis->setSubTickPen(QPen(Qt::white, 1));//副刻度
+	//ui.widget->yAxis->setSubTickPen(QPen(Qt::white, 1));
 
 
 	//设置属性可缩放，移动等
 	ui.widget->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectAxes |
 		QCP::iSelectLegend | QCP::iSelectPlottables);
 	CustomPlot->addGraph();//添加一条曲线
-	CustomPlot->graph(0)->setPen(QPen(Qt::green)); //0是曲线序号，添加的第一条是0，设置曲线颜色
+	CustomPlot->graph(0)->setPen(QPen(Qt::red)); //0是曲线序号，添加的第一条是0，设置曲线颜色
 	CustomPlot->graph(0)->setData(temp, temp1); //输出各点的图像，x和y都是QVector类
 
-	CustomPlot->xAxis->setLabel("x");//x轴的文字
-	CustomPlot->yAxis->setLabel("y");//y轴的文字
+	CustomPlot->xAxis->setLabel("序列");//x轴的文字
+	CustomPlot->yAxis->setLabel("压力值");//y轴的文字
 
 	CustomPlot->xAxis->setRange(0, 100);//x轴范围
-	CustomPlot->yAxis->setRange(-100, 200);//y轴范围
+	CustomPlot->yAxis->setRange(0, 100);//y轴范围
 	CustomPlot->replot();//重绘
 
 }

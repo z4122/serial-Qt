@@ -19,6 +19,8 @@ class SerialThread : public QThread
 public:
 	SerialThread(QObject *parent = 0);
 	~SerialThread();
+	CSerialPort *serialport;
+	void openPort(UINT);
 
 protected:
 	void run();
