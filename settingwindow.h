@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_setting.h"
-
+//#include "cserialport.h"
 
 class settingwindow : public QMainWindow
 {
@@ -12,7 +12,9 @@ public:
 	settingwindow(QWidget *parent = Q_NULLPTR);
 	~settingwindow();
 
-private:
-	Ui::settingClass* setui;
+public:
+	Ui::settingClass setui;
+
+
 };
 

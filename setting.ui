@@ -20,7 +20,7 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="readButton">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -33,7 +33,7 @@
      <string>读取参数</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="setButton">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -49,61 +49,68 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>10</y>
+      <x>70</x>
+      <y>20</y>
       <width>231</width>
-      <height>171</height>
+      <height>161</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <property name="sizeConstraint">
       <enum>QLayout::SetNoConstraint</enum>
      </property>
-     <item row="2" column="2">
+     <item row="4" column="1">
       <widget class="QLineEdit" name="lineEdit_2"/>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_6"/>
-     </item>
      <item row="4" column="2">
-      <widget class="QLineEdit" name="lineEdit_5"/>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-     <item row="5" column="2">
-      <widget class="QLineEdit" name="lineEdit_3"/>
-     </item>
-     <item row="3" column="2">
-      <widget class="QLineEdit" name="lineEdit_4"/>
-     </item>
-     <item row="2" column="1">
       <widget class="QLineEdit" name="lineEdit_7"/>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="lineEdit_11"/>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>阈值</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="lineEdit_3"/>
+     </item>
+     <item row="12" column="1">
+      <widget class="QLineEdit" name="lineEdit_5"/>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="lineEdit_4"/>
+     </item>
+     <item row="2" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>通道1</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="lineEdit_10"/>
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="lineEdit_6"/>
      </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_8"/>
+     <item row="6" column="3">
+      <widget class="QLineEdit" name="lineEdit_13"/>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit_9"/>
-     </item>
-     <item row="2" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>通道2</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>通道3</string>
@@ -123,19 +130,22 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="12" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>通道5</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="9" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>通道4</string>
        </property>
       </widget>
+     </item>
+     <item row="12" column="3">
+      <widget class="QLineEdit" name="lineEdit_15"/>
      </item>
      <item row="0" column="2">
       <widget class="QLabel" name="label_8">
@@ -147,30 +157,20 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>阈值</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QLineEdit" name="lineEdit_11"/>
-     </item>
-     <item row="2" column="3">
+     <item row="4" column="3">
       <widget class="QLineEdit" name="lineEdit_12"/>
      </item>
-     <item row="3" column="3">
-      <widget class="QLineEdit" name="lineEdit_13"/>
-     </item>
-     <item row="4" column="3">
+     <item row="9" column="3">
       <widget class="QLineEdit" name="lineEdit_14"/>
      </item>
-     <item row="5" column="3">
-      <widget class="QLineEdit" name="lineEdit_15"/>
+     <item row="6" column="2">
+      <widget class="QLineEdit" name="lineEdit_8"/>
+     </item>
+     <item row="9" column="2">
+      <widget class="QLineEdit" name="lineEdit_9"/>
+     </item>
+     <item row="12" column="2">
+      <widget class="QLineEdit" name="lineEdit_10"/>
      </item>
     </layout>
    </widget>

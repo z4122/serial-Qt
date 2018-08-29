@@ -38,7 +38,6 @@ public:
     QPushButton *locationButton;
     QPushButton *stopButton;
     QCustomPlot *widget;
-    QPushButton *testbutton;
     QMenuBar *menuBar;
     QMenu *choosingbar;
     QMenu *settingbar;
@@ -74,9 +73,6 @@ public:
         widget = new QCustomPlot(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(20, 10, 421, 261));
-        testbutton = new QPushButton(centralWidget);
-        testbutton->setObjectName(QStringLiteral("testbutton"));
-        testbutton->setGeometry(QRect(190, 320, 75, 23));
         serialClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(serialClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -85,6 +81,9 @@ public:
         choosingbar->setObjectName(QStringLiteral("choosingbar"));
         settingbar = new QMenu(menuBar);
         settingbar->setObjectName(QStringLiteral("settingbar"));
+        settingbar->setEnabled(true);
+        settingbar->setMouseTracking(true);
+        settingbar->setTearOffEnabled(false);
         serialClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(serialClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -108,7 +107,6 @@ public:
         startButton->setText(QApplication::translate("serialClass", "\345\274\200\345\247\213\350\256\260\345\275\225", Q_NULLPTR));
         locationButton->setText(QApplication::translate("serialClass", "\351\200\211\346\213\251\344\277\235\345\255\230\344\275\215\347\275\256", Q_NULLPTR));
         stopButton->setText(QApplication::translate("serialClass", "\345\201\234\346\255\242\350\256\260\345\275\225", Q_NULLPTR));
-        testbutton->setText(QApplication::translate("serialClass", "PushButton", Q_NULLPTR));
         choosingbar->setTitle(QApplication::translate("serialClass", "\351\200\211\346\213\251\344\270\262\345\217\243", Q_NULLPTR));
         settingbar->setTitle(QApplication::translate("serialClass", "\345\217\202\346\225\260\350\256\276\347\275\256", Q_NULLPTR));
     } // retranslateUi

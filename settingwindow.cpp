@@ -5,7 +5,9 @@
 settingwindow::settingwindow(QWidget* parent)
 	:QMainWindow(parent)
 {
-	setui->setupUi(this);
+	setui.setupUi(this);
+
+
 }
 
 

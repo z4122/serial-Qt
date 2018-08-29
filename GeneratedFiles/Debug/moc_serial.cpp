@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_t {
     QByteArrayData data[12];
-    char stringdata0[183];
+    char stringdata0[184];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,22 +34,23 @@ static const qt_meta_stringdata_serial_t qt_meta_stringdata_serial = {
 QT_MOC_LITERAL(0, 0, 6), // "serial"
 QT_MOC_LITERAL(1, 7, 15), // "serialStartWork"
 QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 14), // "serialStopWork"
-QT_MOC_LITERAL(4, 39, 10), // "stopThread"
-QT_MOC_LITERAL(5, 50, 27), // "on_openSerialButton_clicked"
-QT_MOC_LITERAL(6, 78, 22), // "on_startButton_clicked"
-QT_MOC_LITERAL(7, 101, 21), // "on_stopButton_clicked"
-QT_MOC_LITERAL(8, 123, 25), // "on_locationButton_clicked"
-QT_MOC_LITERAL(9, 149, 15), // "serialBoxChange"
-QT_MOC_LITERAL(10, 165, 8), // "textShow"
-QT_MOC_LITERAL(11, 174, 8) // "getError"
+QT_MOC_LITERAL(3, 24, 27), // "on_openSerialButton_clicked"
+QT_MOC_LITERAL(4, 52, 22), // "on_startButton_clicked"
+QT_MOC_LITERAL(5, 75, 21), // "on_stopButton_clicked"
+QT_MOC_LITERAL(6, 97, 25), // "on_locationButton_clicked"
+QT_MOC_LITERAL(7, 123, 15), // "serialBoxChange"
+QT_MOC_LITERAL(8, 139, 8), // "textShow"
+QT_MOC_LITERAL(9, 148, 8), // "getError"
+QT_MOC_LITERAL(10, 157, 13), // "readParameter"
+QT_MOC_LITERAL(11, 171, 12) // "setParameter"
 
     },
-    "serial\0serialStartWork\0\0serialStopWork\0"
-    "stopThread\0on_openSerialButton_clicked\0"
+    "serial\0serialStartWork\0\0"
+    "on_openSerialButton_clicked\0"
     "on_startButton_clicked\0on_stopButton_clicked\0"
     "on_locationButton_clicked\0serialBoxChange\0"
-    "textShow\0getError"
+    "textShow\0getError\0readParameter\0"
+    "setParameter"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,25 +65,23 @@ static const uint qt_meta_data_serial[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   64,    2, 0x06 /* Public */,
-       3,    0,   65,    2, 0x06 /* Public */,
-       4,    0,   66,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
+       3,    0,   65,    2, 0x0a /* Public */,
+       4,    0,   66,    2, 0x0a /* Public */,
        5,    0,   67,    2, 0x0a /* Public */,
        6,    0,   68,    2, 0x0a /* Public */,
-       7,    0,   69,    2, 0x0a /* Public */,
-       8,    0,   70,    2, 0x0a /* Public */,
-       9,    1,   71,    2, 0x0a /* Public */,
-      10,    1,   74,    2, 0x0a /* Public */,
-      11,    1,   77,    2, 0x0a /* Public */,
+       7,    1,   69,    2, 0x0a /* Public */,
+       8,    1,   72,    2, 0x0a /* Public */,
+       9,    1,   75,    2, 0x0a /* Public */,
+      10,    0,   78,    2, 0x0a /* Public */,
+      11,    0,   79,    2, 0x0a /* Public */,
 
  // signals: parameters
-    QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void,
 
  // slots: parameters
@@ -93,6 +92,8 @@ static const uint qt_meta_data_serial[] = {
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -104,15 +105,15 @@ void serial::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->serialStartWork(); break;
-        case 1: _t->serialStopWork(); break;
-        case 2: _t->stopThread(); break;
-        case 3: _t->on_openSerialButton_clicked(); break;
-        case 4: _t->on_startButton_clicked(); break;
-        case 5: _t->on_stopButton_clicked(); break;
-        case 6: _t->on_locationButton_clicked(); break;
-        case 7: _t->serialBoxChange((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 8: _t->textShow((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 9: _t->getError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 1: _t->on_openSerialButton_clicked(); break;
+        case 2: _t->on_startButton_clicked(); break;
+        case 3: _t->on_stopButton_clicked(); break;
+        case 4: _t->on_locationButton_clicked(); break;
+        case 5: _t->serialBoxChange((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->textShow((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 7: _t->getError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 8: _t->readParameter(); break;
+        case 9: _t->setParameter(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -122,20 +123,6 @@ void serial::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             typedef void (serial::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&serial::serialStartWork)) {
                 *result = 0;
-                return;
-            }
-        }
-        {
-            typedef void (serial::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&serial::serialStopWork)) {
-                *result = 1;
-                return;
-            }
-        }
-        {
-            typedef void (serial::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&serial::stopThread)) {
-                *result = 2;
                 return;
             }
         }
@@ -182,18 +169,6 @@ int serial::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void serial::serialStartWork()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
-}
-
-// SIGNAL 1
-void serial::serialStopWork()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
-}
-
-// SIGNAL 2
-void serial::stopThread()
-{
-    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

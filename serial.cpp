@@ -13,7 +13,9 @@ serial::serial(QWidget *parent)
 
 	
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
-	
+
+	connect(setwindow.setui.setButton, SIGNAL(clicked()), SLOT(setParameter()));
+	connect(setwindow.setui.readButton, SIGNAL(clicked()), SLOT(readParameter()));
 	//ui.settingbar->addAction("设置参数", &setwindow, SLOT(show()));
 	connect(ui.settingbar, SIGNAL(aboutToShow()), &setwindow, SLOT(show()));
 }
@@ -80,7 +82,19 @@ void serial::textShow(const QString& input)
 
 void serial::getError(const QString & input)//通过这种方法在主界面生成消息提示框
 {
-	QMessageBox::warning(this, "错误",input);
+	
+}
+
+void serial::readParameter()
+{
+
+}
+
+void serial::setParameter()
+{
+	unsigned char a[4] = "123";
+	sthread->sendParameter(a, 3);
+		
 }
 
 

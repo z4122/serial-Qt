@@ -29,7 +29,7 @@ public:
 	/** 初始化串口函数
 	*
 	*  @param:  UINT portNo 串口编号,默认值为1,即COM1,注意,尽量不要大于9
-	*  @param:  UINT baud   波特率,默认为9600
+	*  @param:  UINT baud   波特率,默认为115200
 	*  @param:  char parity 是否进行奇偶校验,'Y'表示需要奇偶校验,'N'表示不需要奇偶校验
 	*  @param:  UINT databits 数据位的个数,默认值为8个数据位
 	*  @param:  UINT stopsbits 停止位使用格式,默认值为1

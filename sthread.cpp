@@ -22,15 +22,18 @@ void SerialThread::openPort(UINT portNum)
 
 }
 
+void SerialThread::sendParameter(unsigned char * pData, unsigned int length)
+{
+	if (!serialport->WriteData(pData, length))
+		emit catchError("·¢ËÍÊ§°Ü£¬ÇëÖØÊÔ");
+}
+
 
 void SerialThread::run()
 {
 
 	string str;
-	
-	
-	
-	
+
 	char cRecved = 0x00;
 	int n = 10;
 	while (!QThread::currentThread()->isInterruptionRequested())

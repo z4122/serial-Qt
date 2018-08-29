@@ -44,10 +44,13 @@ public slots:
 	void textShow(const QString&);
 	void getError(const QString&);
 
+	void readParameter();
+	void setParameter();
+
+
 signals:
 	void serialStartWork();
-	void serialStopWork();
-	void stopThread();
+
 
 
 
