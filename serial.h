@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_serial.h"
+
 #include <QtWidgets\qpushbutton.h>
 #include <QtWidgets\qwidget.h>
 #include <QtWidgets\qmessagebox.h>
@@ -13,6 +14,8 @@
 #include "sthread.h"
 #include "qthread.h"
 #include "qcustomplot.h"
+#include "settingwindow.h"
+
 
 using namespace std;
 class serial : public QMainWindow
@@ -28,6 +31,7 @@ public:
 
 private:
 	Ui::serialClass ui;
+	settingwindow setwindow;
 	SerialThread *sthread;
 
 public slots:

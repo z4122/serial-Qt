@@ -6,17 +6,16 @@ serial::serial(QWidget *parent)
 	QPushButton *tpushButton;
 
 	ui.setupUi(this);
-
+	
 
 	ui.serialComboBox->addItems(QStringList("串口1"));
 	ui.serialComboBox->addItems(QStringList("串口2"));
 
 	
-
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
 	
-	
-	
+	//ui.settingbar->addAction("设置参数", &setwindow, SLOT(show()));
+	connect(ui.settingbar, SIGNAL(aboutToShow()), &setwindow, SLOT(show()));
 }
 
 
@@ -90,7 +89,7 @@ void serial::on_locationButton_clicked()
 {
 	QFileDialog fileDialog;
 
-	QString fileName = fileDialog.getSaveFileName(this, "Open File", "/home", "Text File(*.txt)");
+	QString fileName = fileDialog.getSaveFileName(this, "Open File", "D://serialtest", "Text File(*.txt)");
 
 	if (fileName == "")
 		return;

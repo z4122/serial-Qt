@@ -45,6 +45,9 @@
     <ClCompile Include="qcustomplot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="settingwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="serial.h">
@@ -56,9 +59,15 @@
     <QtMoc Include="qcustomplot.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="settingwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="serial.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="setting.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

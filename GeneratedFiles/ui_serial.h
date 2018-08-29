@@ -16,6 +16,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -37,7 +38,10 @@ public:
     QPushButton *locationButton;
     QPushButton *stopButton;
     QCustomPlot *widget;
+    QPushButton *testbutton;
     QMenuBar *menuBar;
+    QMenu *choosingbar;
+    QMenu *settingbar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -45,35 +49,42 @@ public:
     {
         if (serialClass->objectName().isEmpty())
             serialClass->setObjectName(QStringLiteral("serialClass"));
-        serialClass->resize(600, 400);
+        serialClass->resize(586, 403);
         centralWidget = new QWidget(serialClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         openSerialButton = new QPushButton(centralWidget);
         openSerialButton->setObjectName(QStringLiteral("openSerialButton"));
-        openSerialButton->setGeometry(QRect(110, 280, 75, 23));
+        openSerialButton->setGeometry(QRect(110, 300, 75, 23));
         serialComboBox = new QComboBox(centralWidget);
         serialComboBox->setObjectName(QStringLiteral("serialComboBox"));
-        serialComboBox->setGeometry(QRect(20, 280, 69, 22));
+        serialComboBox->setGeometry(QRect(10, 300, 69, 22));
         startButton = new QPushButton(centralWidget);
         startButton->setObjectName(QStringLiteral("startButton"));
-        startButton->setGeometry(QRect(350, 300, 75, 23));
+        startButton->setGeometry(QRect(370, 300, 75, 23));
         serialText = new QTextEdit(centralWidget);
         serialText->setObjectName(QStringLiteral("serialText"));
         serialText->setGeometry(QRect(450, 10, 131, 261));
         serialText->setReadOnly(false);
         locationButton = new QPushButton(centralWidget);
         locationButton->setObjectName(QStringLiteral("locationButton"));
-        locationButton->setGeometry(QRect(240, 300, 75, 23));
+        locationButton->setGeometry(QRect(240, 300, 101, 23));
         stopButton = new QPushButton(centralWidget);
         stopButton->setObjectName(QStringLiteral("stopButton"));
-        stopButton->setGeometry(QRect(460, 300, 75, 23));
+        stopButton->setGeometry(QRect(470, 300, 75, 23));
         widget = new QCustomPlot(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(20, 10, 421, 261));
+        testbutton = new QPushButton(centralWidget);
+        testbutton->setObjectName(QStringLiteral("testbutton"));
+        testbutton->setGeometry(QRect(190, 320, 75, 23));
         serialClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(serialClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 23));
+        menuBar->setGeometry(QRect(0, 0, 586, 23));
+        choosingbar = new QMenu(menuBar);
+        choosingbar->setObjectName(QStringLiteral("choosingbar"));
+        settingbar = new QMenu(menuBar);
+        settingbar->setObjectName(QStringLiteral("settingbar"));
         serialClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(serialClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -81,6 +92,9 @@ public:
         statusBar = new QStatusBar(serialClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         serialClass->setStatusBar(statusBar);
+
+        menuBar->addAction(choosingbar->menuAction());
+        menuBar->addAction(settingbar->menuAction());
 
         retranslateUi(serialClass);
 
@@ -94,6 +108,9 @@ public:
         startButton->setText(QApplication::translate("serialClass", "\345\274\200\345\247\213\350\256\260\345\275\225", Q_NULLPTR));
         locationButton->setText(QApplication::translate("serialClass", "\351\200\211\346\213\251\344\277\235\345\255\230\344\275\215\347\275\256", Q_NULLPTR));
         stopButton->setText(QApplication::translate("serialClass", "\345\201\234\346\255\242\350\256\260\345\275\225", Q_NULLPTR));
+        testbutton->setText(QApplication::translate("serialClass", "PushButton", Q_NULLPTR));
+        choosingbar->setTitle(QApplication::translate("serialClass", "\351\200\211\346\213\251\344\270\262\345\217\243", Q_NULLPTR));
+        settingbar->setTitle(QApplication::translate("serialClass", "\345\217\202\346\225\260\350\256\276\347\275\256", Q_NULLPTR));
     } // retranslateUi
 
 };
