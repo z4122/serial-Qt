@@ -14,8 +14,8 @@ serial::serial(QWidget *parent)
 	
 	connect(ui.serialComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(serialBoxChange(int)));
 
-	connect(setwindow.setui.setButton, SIGNAL(clicked()), SLOT(setParameter()));
-	connect(setwindow.setui.readButton, SIGNAL(clicked()), SLOT(readParameter()));
+	connect(setwindow.setui.setButton, SIGNAL(clicked()), this,SLOT(setParameter()));
+	connect(setwindow.setui.readButton, SIGNAL(clicked()), this,SLOT(readParameter()));
 	//ui.settingbar->addAction("ÉèÖÃ²ÎÊý", &setwindow, SLOT(show()));
 	connect(ui.settingbar, SIGNAL(aboutToShow()), &setwindow, SLOT(show()));
 }
@@ -92,11 +92,40 @@ void serial::readParameter()
 
 void serial::setParameter()
 {
-	unsigned char a[4] = "123";
-	sthread->sendParameter(a, 3);
-		
+	float parameter[3];
+
+	parameter[0] = QString2Float(setwindow.setui.lineEdit_1->text());
+	parameter[1] = QString2Float(setwindow.setui.lineEdit_2->text());
+	parameter[2] = QString2Float(setwindow.setui.lineEdit_3->text());
+	sthread->sendParameter(parameter, 1);
+	
+	/*
+	parameter[0] = QString2Float(setwindow.setui.lineEdit_4->text());
+	parameter[1] = QString2Float(setwindow.setui.lineEdit_5->text());
+	parameter[2] = QString2Float(setwindow.setui.lineEdit_6->text());
+	sthread->sendParameter(parameter, 2);
+
+	parameter[0] = QString2Float(setwindow.setui.lineEdit_7->text());
+	parameter[1] = QString2Float(setwindow.setui.lineEdit_8->text());
+	parameter[2] = QString2Float(setwindow.setui.lineEdit_9->text());
+	sthread->sendParameter(parameter, 3);
+
+	parameter[0] = QString2Float(setwindow.setui.lineEdit_10->text());
+	parameter[1] = QString2Float(setwindow.setui.lineEdit_11->text());
+	parameter[2] = QString2Float(setwindow.setui.lineEdit_12->text());
+	sthread->sendParameter(parameter, 4);
+
+	parameter[0] = QString2Float(setwindow.setui.lineEdit_13->text());
+	parameter[1] = QString2Float(setwindow.setui.lineEdit_14->text());
+	parameter[2] = QString2Float(setwindow.setui.lineEdit_15->text());
+	sthread->sendParameter(parameter, 5);
+	*/
 }
 
+float serial::QString2Float(QString input)
+{
+	return stof(input.toStdString())*1000;
+}
 
 
 void serial::on_locationButton_clicked()

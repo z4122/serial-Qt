@@ -21,7 +21,7 @@ public:
 	~SerialThread();
 	CSerialPort *serialport;
 	void openPort(UINT);
-	void sendParameter(unsigned char* pData, unsigned int length);
+	void sendParameter(float* pData, unsigned int length);
 
 
 protected:

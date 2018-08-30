@@ -47,6 +47,8 @@ public slots:
 	void readParameter();
 	void setParameter();
 
+	float QString2Float(QString input);
+
 
 signals:
 	void serialStartWork();

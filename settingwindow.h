@@ -15,6 +15,8 @@ public:
 public:
 	Ui::settingClass setui;
 
+private:
+	void setLineEditOrder();
 
 };
 
