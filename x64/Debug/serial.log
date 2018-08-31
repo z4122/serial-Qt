@@ -1,11 +1,2 @@
-﻿  Moc'ing serial.h...
-  Moc'ing sthread.h...
-  Uic'ing setting.ui...
-  moc_serial.cpp
-  moc_settingwindow.cpp
-  moc_sthread.cpp
-  main.cpp
-  serial.cpp
-  settingwindow.cpp
-  sthread.cpp
+﻿  serial.cpp
   serial.vcxproj -> C:\Users\41221\source\repos\serial\x64\Debug\serial.exe

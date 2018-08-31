@@ -28,6 +28,8 @@ public:
 	serial(QWidget *parent = Q_NULLPTR);
 	void Graph_Show(QCustomPlot *, const string);
 
+	void Graph_Init(QCustomPlot * CustomPlot);
+
 
 private:
 	Ui::serialClass ui;
@@ -41,7 +43,7 @@ public slots:
 	void on_locationButton_clicked();
 	void serialBoxChange(int);
 	
-	void textShow(const QString&);
+	void processText(const QString&);
 	void getError(const QString&);
 
 	void readParameter();

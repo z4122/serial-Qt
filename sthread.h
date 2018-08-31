@@ -12,6 +12,19 @@
 #include "qtimer.h"
 
 using namespace std;
+
+
+/**
+	ËÄ¸öÃüÁî£º
+	setParameter,getParameter,startRecord,stopRecord.
+*/
+enum command {
+	setParameter = 0x01,
+	getParameter = 0x02,
+	startRecord = 0x03,
+	stopRecord = 0x04
+};
+
 class SerialThread : public QThread
 {
 	Q_OBJECT
@@ -21,8 +34,9 @@ public:
 	~SerialThread();
 	CSerialPort *serialport;
 	void openPort(UINT);
-	void sendParameter(float* pData, unsigned int length);
-
+	void getParameter();
+	void sendParameter(float* pData, unsigned int index);
+	void sendCommand(command);
 
 protected:
 	void run();

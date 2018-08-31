@@ -11,6 +11,11 @@ SerialThread::~SerialThread()
 
 }
 
+/**
+	打开串口
+	@输入参数:parameter
+	@输出参数:
+*/
 void SerialThread::openPort(UINT portNum)
 {
 	serialport = new CSerialPort();
@@ -20,37 +25,6 @@ void SerialThread::openPort(UINT portNum)
 		return;
 	}
 
-}
-
-/**
-	上位机向单片机发送命令，单片机返回参数。
-	@输入参数:parameter
-	@输出参数:
-*/
-void SerialThread::getParameter()
-{
-	uint8_t buffer[10];
-	uint16_t temp = 0;
-	uint8_t sum = 0;
-
-	buffer[0] = 0x00;
-	buffer[1] = 0x00;
-	buffer[2] = 0x0A;
-
-	buffer[3] = 0xff;
-	buffer[4] = 0xff;
-	buffer[5] = 0xff;
-	buffer[6] = 0xff;
-	buffer[7] = 0xff;
-	buffer[8] = 0xff;
-
-	for (int i = 2; i<9; ++i)
-		temp += buffer[i];//校验和
-
-	buffer[9] = temp;
-
-	if (!serialport->WriteData(buffer, 10))
-		emit catchError("发送失败，请重试");
 }
 
 
@@ -75,6 +49,42 @@ void SerialThread::sendParameter(float * pData, unsigned int index)
 	buffer[6] = (int16_t)pData[1] >> 8;
 	buffer[7] = (int16_t)pData[2] & 0xff;
 	buffer[8] = (int16_t)pData[2] >> 8;
+
+	for (int i = 2; i<9; ++i)
+		temp += buffer[i];//校验和
+
+	buffer[9] = temp;
+
+	if (!serialport->WriteData(buffer, 10))
+		emit catchError("发送失败，请重试");
+}
+/**
+	上位机发送命令到单片机。
+	有4个命令 
+	@输入参数:command
+	@输出参数:
+*/
+void SerialThread::sendCommand(command inputCommand)
+{
+	uint8_t buffer[10];
+	uint16_t temp = 0;
+	uint8_t sum = 0;
+
+	//if (inputCommand == command::setParameter)
+	//{
+
+	//}
+
+	buffer[0] = 0x00;
+	buffer[1] = 0x00;
+	buffer[2] = inputCommand;
+
+	buffer[3] = 0xff;
+	buffer[4] = 0xff;
+	buffer[5] = 0xff;
+	buffer[6] = 0xff;
+	buffer[7] = 0xff;
+	buffer[8] = 0xff;
 
 	for (int i = 2; i<9; ++i)
 		temp += buffer[i];//校验和

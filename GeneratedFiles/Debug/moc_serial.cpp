@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serial_t {
     QByteArrayData data[14];
-    char stringdata0[204];
+    char stringdata0[207];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,19 +39,19 @@ QT_MOC_LITERAL(4, 52, 22), // "on_startButton_clicked"
 QT_MOC_LITERAL(5, 75, 21), // "on_stopButton_clicked"
 QT_MOC_LITERAL(6, 97, 25), // "on_locationButton_clicked"
 QT_MOC_LITERAL(7, 123, 15), // "serialBoxChange"
-QT_MOC_LITERAL(8, 139, 8), // "textShow"
-QT_MOC_LITERAL(9, 148, 8), // "getError"
-QT_MOC_LITERAL(10, 157, 13), // "readParameter"
-QT_MOC_LITERAL(11, 171, 12), // "setParameter"
-QT_MOC_LITERAL(12, 184, 13), // "QString2Float"
-QT_MOC_LITERAL(13, 198, 5) // "input"
+QT_MOC_LITERAL(8, 139, 11), // "processText"
+QT_MOC_LITERAL(9, 151, 8), // "getError"
+QT_MOC_LITERAL(10, 160, 13), // "readParameter"
+QT_MOC_LITERAL(11, 174, 12), // "setParameter"
+QT_MOC_LITERAL(12, 187, 13), // "QString2Float"
+QT_MOC_LITERAL(13, 201, 5) // "input"
 
     },
     "serial\0serialStartWork\0\0"
     "on_openSerialButton_clicked\0"
     "on_startButton_clicked\0on_stopButton_clicked\0"
     "on_locationButton_clicked\0serialBoxChange\0"
-    "textShow\0getError\0readParameter\0"
+    "processText\0getError\0readParameter\0"
     "setParameter\0QString2Float\0input"
 };
 #undef QT_MOC_LITERAL
@@ -114,7 +114,7 @@ void serial::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 3: _t->on_stopButton_clicked(); break;
         case 4: _t->on_locationButton_clicked(); break;
         case 5: _t->serialBoxChange((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->textShow((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 6: _t->processText((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 7: _t->getError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 8: _t->readParameter(); break;
         case 9: _t->setParameter(); break;
