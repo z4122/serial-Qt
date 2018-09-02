@@ -1,2 +1,8 @@
-﻿  serial.cpp
+﻿  Uic'ing serial.ui...
+  Uic'ing setting.ui...
+  moc_serial.cpp
+  moc_settingwindow.cpp
+  main.cpp
+  serial.cpp
+  settingwindow.cpp
   serial.vcxproj -> C:\Users\41221\source\repos\serial\x64\Debug\serial.exe

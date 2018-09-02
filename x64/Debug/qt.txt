@@ -1,0 +1,2 @@
+Uic'ing serial.ui...;D:\Qt\Qt5.9.2\5.9.2\msvc2017_64\bin\uic.exe;"C:\Users\41221\source\repos\serial\serial\serial.ui" -o ".\GeneratedFiles\ui_serial.h"
+Uic'ing setting.ui...;D:\Qt\Qt5.9.2\5.9.2\msvc2017_64\bin\uic.exe;"C:\Users\41221\source\repos\serial\serial\setting.ui" -o ".\GeneratedFiles\ui_setting.h"
